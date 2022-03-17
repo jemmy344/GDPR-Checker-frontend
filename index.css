@@ -1,0 +1,199 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding:0;
+   background: #020A29;
+}
+.main-grid{
+    position: relative;
+    top:100px;
+    left:295px;
+    height: 50em;
+    width: 70%;
+    max-width: 100%;
+    background: url('1158937.jpg') no-repeat;
+    background-size: cover;
+    opacity: 75;
+}
+nav{
+    padding-top: .3em;
+    background: transparent;
+    height: 90px;
+    width: 100%;
+  }
+  label.logo{
+    position: relative;
+    top: 30px;
+    color: #BBE2FF;
+    font-size: 33px;
+    letter-spacing: .1em;
+    padding: 0 50px;
+    font-weight: 600;
+    font-family: 'Abril Fatface', cursive;
+  }
+  nav ul{
+    float: right;
+    margin-right: 60px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 2px;
+    list-style: none;
+  }
+  nav ul li a{
+    text-decoration: none;
+    color: #f2f2f2;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase; 
+    font-family: 'Poppins', sans-serif;
+  }
+  a.active,a:hover{
+    background: rgb(29, 29, 29);
+    transition: .5s;
+  }
+  .checkbtn{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #check{
+    display: none;
+  }
+  .quote{
+      position: relative;
+      top:170px;
+      left:89px;
+      color: rgb(255, 255, 255);
+      font-size: 4.2em;
+      font-family: 'Abril Fatface', cursive;
+  }
+  
+  @media (max-width: 958px){
+      body {
+          max-width: 100%;
+          height: auto;
+      }
+    label.logo{
+      font-size: 25px;
+      padding-left: 25px;
+    }
+    nav ul li a{
+      font-size: 10px;
+    }
+    .bg-image {
+        max-width: 70%;
+        height: auto;
+    }
+    .main-grid {
+        position: relative;
+        top:70px;
+        left: 105px;
+        max-width: 100%;
+        height: 53.5em;
+        background-size: cover;
+    }
+    .quote{
+        position: relative;
+        top:220px;
+        left:18px;
+        color: rgb(255, 255, 255);
+        font-size: 3em;
+        font-family: 'Abril Fatface', cursive;
+    }
+  }
+  @media (max-width: 858px){
+    .checkbtn{
+      display: block;
+      margin-right: 32px;
+      color: rgb(255, 255, 255);
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background:transparent;
+      top: 130px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+    }
+    nav ul li{
+      display: block;
+      margin: 20px 0;
+      line-height: 30px;
+    }
+    nav ul li a{
+      font-family: 'Abril Fatface', cursive;
+      font-size: 20px;
+    }
+    a:hover,a.active{
+      background: none;
+      color: rgb(0, 0, 0);
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+    label.logo{
+      font-size: 20px;
+      padding-top: 25px;
+    }
+
+    .search-box{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: #2f3640;
+      height: 40px;
+      padding: 10px;
+      border-radius:40px;
+    }
+
+    .search-box:hover >.search-txt{
+      width: 240px;
+      padding: 0 6px;
+    }
+
+    .search-box:hover >.search-btn{
+      background:white;
+    }
+
+    .search-btn{
+      color: #e84118;
+      float: right;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #2f3640;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-txt{
+      border: none;
+      background: none;
+      outline: none;
+      float: left;
+      padding: 0;
+      color: white;
+      font-size: 16px;
+      transition: 0.4s;
+      line-height: 40px;
+      width: 0px;
+    }
+
+
+}  
