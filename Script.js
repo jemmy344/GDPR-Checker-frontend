@@ -1,22 +1,60 @@
-//document.querySelector("#a").textContent = 'Winner';
+const messageSelector=document.querySelector("#a")
 
-//const { default: axios } = require("axios");
-
-
-
-
-
+const addCheckCookie=()=>{
+    $('#cookie_check').css('display','block');
+    $("#cookie_check").removeClass('fa fa-times');
+    $('#cookie_check').addClass("fa fa-check");
+    $('#cookie_check').css('color','green');
+}
+const addCheckPrivacy=()=>{
+    $('#privacy_check').css('display','block');
+    $("#privacy_check").removeClass('fa fa-times');
+    $('#privacy_check').addClass("fa fa-check");
+    $('#privacy_check').css('color','green');
+}
+const removeCheckCookie=()=>{
+    $('#cookie_check').css('display','block');
+    $("#cookie_check").removeClass('fa fa-check');
+    $('#cookie_check').addClass("fa fa-times");
+    $('#cookie_check').css('color','red');
+}
+const removeCheckPrivacy=()=>{
+    $('#privacy_check').css('display','block');
+    $("#privacy_check").removeClass('fa fa-check');
+    $('#privacy_check').addClass("fa fa-times");
+    $('#privacy_check').css('color','red');
+}
 const fetchData = (url_) => {
     document.querySelector("#error").textContent = '';
-    axios.post('https://cookie-checker.aderintosadiq.repl.co/?name=sadiq', 
-    JSON.stringify({url:url_})).then(res => { console.log(res.data.has_cookie)
-    if (res.data.has_cookie) {
-        document.querySelector("#a").textContent = 'this website uses cookies'
+    window.axios.post('https://cookie-checker-app.herokuapp.com/', 
+    JSON.stringify({url:url_})).then(res => {  
+    $('#a').hide();
+        if (res.data.has_cookie & res.data.privacy_policy) { 
+        //document.querySelector("#a").textContent = 'this website uses cookies'
+        addCheckCookie()
+        
+        addCheckPrivacy()
+        
+     }
+    else if (!res.data.has_cookie & res.data.privacy_policy) {
+       //document.querySelector("#a").textContent = 'this website does not use cookies'
+       removeCheckCookie()
+       
+       addCheckPrivacy()
+       
+    }
+    else if (res.data.has_cookie & !res.data.privacy_policy) {
+        addCheckCookie()
+
+        removeCheckPrivacy()
+
     }
     else {
-        document.querySelector("#a").textContent = 'this website does not use cookies'   
+      removeCheckCookie()
+
+      removeCheckPrivacy()
     }
-})
+}).catch(error=>{messageSelector.textContent = 'an error occured please check back later...'})
 }
 
 const validateUrl = (url) => {
@@ -27,10 +65,11 @@ const validateUrl = (url) => {
 const check = (url) => {
     if (!validateUrl(url)) {
         document.querySelector("#error").textContent = 'pleae enter a valid url';
-        document.querySelector("#a").textContent = ''
+        messageSelector.textContent = ''
         return;
     }
-    document.querySelector("#a").textContent = 'Loading...'
+    $('#a').show();
+    messageSelector.textContent = 'Loading...'
     fetchData(url)
 }
 
@@ -41,4 +80,8 @@ document.querySelector("#submit").addEventListener("click", function(e) {
     const url = document.querySelector("#text").value
 
     check(url)
+})
+
+$('document').ready(function(){
+
 })
